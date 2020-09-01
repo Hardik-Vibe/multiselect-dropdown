@@ -1,0 +1,53 @@
+::ng-deep .ui-tree .ui-tree-container {
+        height: 200px;
+    }      
+
+::ng-deep .ui-chkbox .ui-chkbox-box.ui-state-disabled {
+    display: none;
+}
+
+::ng-deep .free-device .ui-chkbox {
+    display: none;
+}
+
+::ng-deep .free-device .ui-treenode-label {
+    padding: 0 !important;
+}
+
+::ng-deep .free-device .pi-info {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5em 0 0;
+}
+
+::ng-deep .ui-tree .ui-treenode-leaf {
+    margin-left: 15px;
+}
+
+::ng-deep .free-device span.label {
+    padding: 0.286em;
+    cursor: pointer;
+}
+
+::ng-deep .node-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::ng-deep .free-device span.label.disabled{
+    cursor: not-allowed;
+}
+
+::ng-deep .tooltip {
+    background: #fcffed;
+    color: #333;
+    font-size: 11px;
+    border: 1px solid #eee;
+    box-shadow: 2px 2px 3px #c8c9ca;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+}

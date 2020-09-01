@@ -1,0 +1,33 @@
+<div class="dropdown-container">
+  <button (click)="op.toggle($event)">Open</button> 
+  <p-overlayPanel #op>
+    <p-tree [value]="firewalls" [selectionMode]="dropdownConfig.mode" [filter]="dropdownConfig.filter"
+      [emptyMessage]="dropdownConfig.emptyMessage" [(selection)]="selectedFiles" [propagateSelectionUp]="true"
+      [propagateSelectionDown]="true" (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)">
+
+      <ng-template let-node pTemplate="free">
+        <div class="node-details">
+          <span>
+            <i [popperPlacement]="'bottom'" [popper]="allocateTooltip" [popperTrigger]="'hover'"
+              [popperAppendTo]="'p-tree'" [popperApplyClass]="'tooltip'" class="pi pi-info">
+            </i>
+            <popper-content #allocateTooltip>
+              <p>Multidevice reporting is only available with the Advanced license</p>
+            </popper-content>
+          </span>
+          <span class="label" [ngClass]="{'disabled': disableFreeDevice}"
+            (click)="selectSingleDevice(node)">{{node.label}}</span>
+        </div>
+      </ng-template>
+
+      <ng-template let-node pTemplate="paid">
+        <span>{{node.label}}</span>
+      </ng-template>
+    </p-tree>
+  </p-overlayPanel>
+
+
+  {{selectedFiles.label}}
+  <!-- <div>Selected Nodes: <span *ngFor="let file of selectedFiles">{{file.label}}</span></div> -->
+
+</div>

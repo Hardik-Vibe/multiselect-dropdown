@@ -1,0 +1,22 @@
+<div class="container">
+  <p-multiSelect appendTo="body" [filterMatchMode]="'startsWith'" [showToggleAll]="true" [scrollHeight]="'400px'"
+    [options]="options" [(ngModel)]="selectedOptions" (onChange)="onChangeMultiSelect($event)"
+    (onPanelHide)="onMultiSelectPanelHide()">
+    <ng-template pTemplate="selectedItems">
+      <span>{{getSelectedItemsLabel()}}</span>
+    </ng-template>
+    <ng-template let-option let-i="index" pTemplate="item">
+      <span>{{option.label}}</span>
+      <div (click)="onClickChildOptionContainer($event)" class="child-option-checkbox"
+        *ngFor="let child of option.value.children">
+        <p-checkbox name="{{option.label}}" [value]="child" *ngIf="!child.disabled"
+          label="{{child.label}}" [(ngModel)]="option.selectedChildOptions"
+          (click)="onClickChildOptionChecbox($event)" (onChange)="onChangeChildOptionCheckbox(option)"></p-checkbox>
+        <div *ngIf="child.disabled">
+          <span><i class="pi pi-info"></i></span>
+          <label class="ui-chkbox-label">{{child.label}}</label>
+        </div>
+      </div>
+    </ng-template>
+  </p-multiSelect>
+</div>
